@@ -1,10 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// TODO Implement struct for books, with members: author, title, release date, genre, page count
+// Struct for books, with members: author, title, release date, genre, page count.
+struct book {
+    char author[32];
+    char title[32];
+    char releaseDate[16];
+    char genre[16];
+    int pageCount;
+};
 
 int main() {
-    // Your code here
+    struct book library[0];
+
+    printf("===== Library Manager =====\n");
     
     return 0;
 }
