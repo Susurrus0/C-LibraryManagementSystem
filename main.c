@@ -6,12 +6,13 @@ struct book {
     int id;
     char author[32];
     char title[32];
-    char releaseDate[16];
+    int yearReleased;
     char genre[16];
     int pageCount;
 };
 
 void listBooks(struct book *library, int librarySize);
+void addBook(struct book *library, int librarySize);
 
 int main() {
     struct book library[0];
@@ -30,17 +31,32 @@ void listBooks(struct book *library, int librarySize) {
         return;
     }
 
-    printf("ID\tAuthor\tTitle\tRelease Date\tGenre\tPage Count\n");
+    printf("ID\tAuthor\tTitle\tYear Released\tGenre\tPage Count\n");
     for (int i = 0; i < librarySize; i++) {
-        printf("%i\t%s\t%s\t%s\t%s\t%i\n",
+        printf("%i\t%s\t%s\t%i\t%s\t%i\n",
             library[i].id, library[i].author, library[i].title,
-            library[i].releaseDate, library[i].genre, library[i].pageCount);
+            library[i].yearReleased, library[i].genre, library[i].pageCount);
     }
 }
 
-
 // TODO Implement function for adding a new book
+void addBook(struct book *library, int librarySize) {
+    struct book newBook;
+    newBook.id = library[librarySize - 1].id + 1;
 
+    printf("Who is the author of the book? ");
+    scanf("%s", newBook.author);
+    printf("What is the book's title? ");
+    scanf("%s", newBook.title);
+    printf("What year was the book released in? ");
+    scanf("%i", newBook.yearReleased);
+    printf("What genre is the book part of? ");
+    scanf("%s", newBook.genre);
+    printf("How many pages does the book have? ");
+    scanf("%i", newBook.pageCount);
+
+    // Realloc library to fit 1 more book and add newBook to library
+}
 
 // TODO Implement function for deleting an existing book
 
