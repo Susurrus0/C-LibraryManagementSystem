@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Struct for books, with members: author, title, release date, genre, page count.
+// Struct for books, with members: id, author, title, release date, genre, page count.
 struct book {
     int id;
     char author[32];
@@ -11,15 +11,22 @@ struct book {
     int pageCount;
 };
 
+// Struct for the Library, with members: bookCount, catalogue.
+struct Library {
+    int bookCount;
+    struct book *catalogue;
+};
+
 void listBooks(struct book *library, int librarySize);
 void addBook(struct book *library, int librarySize);
 
 int main() {
-    struct book library[0];
+    struct book *library = NULL;
+    library = (struct book*) malloc(sizeof(struct book)*0);
     int librarySize = sizeof(library) / sizeof(library[0]);
 
     printf("======== Library Manager ========\n");
-    printf("** librarySize = %i\n", librarySize);
+    printf("\t** librarySize = %i\n", librarySize);
     
     return 0;
 }
@@ -56,6 +63,7 @@ void addBook(struct book *library, int librarySize) {
     scanf("%i", newBook.pageCount);
 
     // Realloc library to fit 1 more book and add newBook to library
+
 }
 
 // TODO Implement function for deleting an existing book
