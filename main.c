@@ -1,55 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Struct for books, with members: id, author, title, release date, genre, page count.
-struct book {
-    int id;
+// Struct for books, with members: author, title, release date, genre, page count.
+typedef struct {
     char author[32];
     char title[32];
-    int yearReleased;
+    unsigned short yearReleased;
     char genre[16];
-    int pageCount;
-};
+    unsigned short pageCount;
+} book;
 
 // Struct for the Library, with members: bookCount, catalogue.
-struct Library {
+typedef struct {
     int bookCount;
-    struct book *catalogue;
-};
+    book *catalogue;
+    int catalogueSize;
+} Library;
 
-void listBooks(struct book *library, int librarySize);
-void addBook(struct book *library, int librarySize);
+void listBooks(Library library);
+void addBook(Library library);
 
 int main() {
-    struct book *library = NULL;
-    library = (struct book*) malloc(sizeof(struct book)*0);
-    int librarySize = sizeof(library) / sizeof(library[0]);
+    Library library = {0};
+    library.catalogue = (book*) malloc(sizeof(book) * library.bookCount);
+    library.catalogueSize = sizeof(library.catalogue) / sizeof(library.catalogue[0]);
 
     printf("======== Library Manager ========\n");
-    printf("\t** librarySize = %i\n", librarySize);
+    printf("\t** library.catalogueSize = %i\n", library.catalogueSize);
     
     return 0;
 }
 
 // Function for displaying the list of all books.
-void listBooks(struct book *library, int librarySize) {
-    if (librarySize < 1) {
+void listBooks(Library library) {
+    if (library.catalogueSize < 1) {
         printf("There are no books in the Library.\n");
         return;
     }
 
-    printf("ID\tAuthor\tTitle\tYear Released\tGenre\tPage Count\n");
-    for (int i = 0; i < librarySize; i++) {
-        printf("%i\t%s\t%s\t%i\t%s\t%i\n",
-            library[i].id, library[i].author, library[i].title,
-            library[i].yearReleased, library[i].genre, library[i].pageCount);
+    printf("Author\tTitle\tYear Released\tGenre\tPage Count\n");
+    for (int i = 0; i < library.catalogueSize; i++) {
+        printf("%s\t%s\t%i\t%s\t%i\n",
+            library.catalogue[i].author, library.catalogue[i].title, library.catalogue[i].yearReleased,
+            library.catalogue[i].genre, library.catalogue[i].pageCount);
     }
 }
 
 // TODO Implement function for adding a new book
-void addBook(struct book *library, int librarySize) {
-    struct book newBook;
-    newBook.id = library[librarySize - 1].id + 1;
+void addBook(Library library) {
+    book newBook;
 
     printf("Who is the author of the book? ");
     scanf("%s", newBook.author);
