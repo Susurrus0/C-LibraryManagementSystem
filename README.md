@@ -2,6 +2,8 @@
 
 Library Management System demo project written in C.
 
+[![Markdown Lint](https://github.com/Susurrus0/C-LibraryManagementSystem/actions/workflows/main.yml/badge.svg)](https://github.com/Susurrus0/C-LibraryManagementSystem/actions/workflows/main.yml)
+
 Simple simulation of a library.
 
 The following functionalities are available:
