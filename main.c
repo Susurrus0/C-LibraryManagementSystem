@@ -42,12 +42,37 @@ int main() {
     unsigned int userInput;
     scanf("%d", &userInput);
     
-    addBook(libPtr);
+    switch (userInput) {
+        case 0:
+            exit(EXIT_SUCCESS);
+            break;
+        case 1:
+            listBooks(libPtr);
+            break;
+        case 2:
+            addBook(libPtr);
+            break;
+        case 3:
+            // delete book func
+            break;
+        case 4:
+            // lend book func
+            break;
+        case 5:
+            // list borrowed books func
+            break;
+        default:
+            printf("Invalid output.\n");
+            break;
+    }
 
-    printf("\t** libPtr->bookCount = %i\n", libPtr->bookCount);
+    // addBook(libPtr);
 
-    listBooks(libPtr);
+    // printf("\t** libPtr->bookCount = %i\n", libPtr->bookCount);
 
+    // listBooks(libPtr);
+
+    // TODO Move this to an exit function
     free(libPtr->catalogue);
     libPtr->catalogue = NULL;
     return 0;
