@@ -24,9 +24,23 @@ int main() {
     Library *libPtr = &library;
 
     printf("======== Library Manager ========\n");
+    printf("|    1. List available books    |\n");
+    printf("|         2. Add a book         |\n");
+    printf("|       3. Delete a book        |\n");
+    printf("|        4. Lend a book         |\n");
+    printf("|    5. List borrowed books     |\n");
+    printf("|                               |\n");
+    printf("|            0. Exit            |\n");
+    printf("=================================\n");
+    printf("\n");
+
     printf("\t** libPtr->bookCount = %i\n", libPtr->bookCount);
     printf("\t** sizeof(book) = %i\n", sizeof(book));
     printf("\t** sizeof(Library) = %i\n", sizeof(Library));
+
+    printf("Choice: ");
+    unsigned int userInput;
+    scanf("%d", &userInput);
     
     addBook(libPtr);
 
