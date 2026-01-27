@@ -35,8 +35,8 @@ int main() {
     printf("\n");
 
     printf("\t** libPtr->bookCount = %i\n", libPtr->bookCount);
-    printf("\t** sizeof(book) = %i\n", sizeof(book));
-    printf("\t** sizeof(Library) = %i\n", sizeof(Library));
+    printf("\t** sizeof(book) = %li\n", sizeof(book));
+    printf("\t** sizeof(Library) = %li\n", sizeof(Library));
 
     printf("Choice: ");
     unsigned int userInput;
@@ -78,11 +78,11 @@ void addBook(Library *library) {
     printf("What is the book's title? ");
     scanf("%s", newBook.title);
     printf("What year was the book released in? ");
-    scanf("%d", &newBook.yearReleased);
+    scanf("%hd", &newBook.yearReleased);
     printf("What genre is the book part of? ");
     scanf("%s", newBook.genre);
     printf("How many pages does the book have? ");
-    scanf("%d", &newBook.pageCount);
+    scanf("%hd", &newBook.pageCount);
 
     // Realloc library to fit 1 more book and add newBook to library
     library->bookCount++;
