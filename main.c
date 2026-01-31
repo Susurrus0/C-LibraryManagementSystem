@@ -119,9 +119,23 @@ void addBook(Library *library) {
 }
 
 // TODO Implement function for deleting an existing book
+void deleteBook(Library *library) {
+    // TODO Write a more complex system for choosing book for deletion
+    int id;
+    printf("What's the id of the book you'd like to delete? ");
+    scanf("%d", id);
+
+    if (id < 0 || id >= library->bookCount) {
+        printf("Invalid id.\n");
+        return;
+    }
+}
 
 
 // TODO Implement function for borrowing books
 
 
 // TODO Implement function for displaying a list of all borrowed books
+
+
+// TODO Implement function for closing the program
