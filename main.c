@@ -126,11 +126,19 @@ void deleteBook(Library *library) {
     int id;
     printf("What's the id of the book you'd like to delete? ");
     scanf("%d", id);
+    char title = library->catalogue[id].title;
 
     if (id < 0 || id >= library->bookCount) {
         printf("Invalid id.\n");
         return;
     }
+
+    for (int i = id; i + 1 < library->bookCount; i++) {
+        library->catalogue[i] = library->catalogue[i+1];
+    }
+    library->bookCount--;
+
+    printf("Book '%s' deleted successfully.\n");
 }
 
 
@@ -144,3 +152,6 @@ void deleteBook(Library *library) {
 
 
 // TODO Implement function for closing the program
+
+
+// TODO Save all books to a file
