@@ -23,6 +23,8 @@ int main() {
     Library library = {0};
     Library *libPtr = &library;
 
+    // TODO Implement main loop
+
     printf("======== Library Manager ========\n");
     printf("|    1. List available books    |\n");
     printf("|         2. Add a book         |\n");
@@ -136,6 +138,9 @@ void deleteBook(Library *library) {
 
 
 // TODO Implement function for displaying a list of all borrowed books
+
+
+// TODO Implement function for returning borrowed books
 
 
 // TODO Implement function for closing the program
